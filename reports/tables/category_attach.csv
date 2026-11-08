@@ -1,0 +1,111 @@
+anchor_category,attached_category,orders_with_both,anchor_orders,attach_rate,lift
+Bags & Storage,Kitchen & Dining,23028,26059,0.8837,1.071
+Bags & Storage,Home Decor,20338,26059,0.7805,1.07
+Bags & Storage,Other,19813,26059,0.7603,1.107
+Bags & Storage,Lighting & Candles,15636,26059,0.6,1.081
+Bags & Storage,Stationery & Gift Wrap,15194,26059,0.5831,1.158
+Bags & Storage,"Toys, Kids & Craft",11116,26059,0.4266,1.228
+Bags & Storage,Party & Celebration,10910,26059,0.4187,1.158
+Bags & Storage,Jewellery & Accessories,9545,26059,0.3663,1.168
+Bags & Storage,Seasonal,9077,26059,0.3483,1.116
+Bags & Storage,Garden & Outdoor,8464,26059,0.3248,1.177
+Garden & Outdoor,Kitchen & Dining,9204,10019,0.9187,1.114
+Garden & Outdoor,Home Decor,8752,10019,0.8735,1.198
+Garden & Outdoor,Bags & Storage,8464,10019,0.8448,1.177
+Garden & Outdoor,Other,8396,10019,0.838,1.22
+Garden & Outdoor,Lighting & Candles,7150,10019,0.7136,1.285
+Garden & Outdoor,Stationery & Gift Wrap,6503,10019,0.6491,1.289
+Garden & Outdoor,Party & Celebration,5073,10019,0.5063,1.401
+Garden & Outdoor,"Toys, Kids & Craft",4860,10019,0.4851,1.397
+Garden & Outdoor,Jewellery & Accessories,4334,10019,0.4326,1.379
+Garden & Outdoor,Seasonal,3787,10019,0.378,1.211
+Home Decor,Kitchen & Dining,22936,26476,0.8663,1.05
+Home Decor,Bags & Storage,20338,26476,0.7682,1.07
+Home Decor,Other,19890,26476,0.7512,1.094
+Home Decor,Lighting & Candles,16891,26476,0.638,1.149
+Home Decor,Stationery & Gift Wrap,14906,26476,0.563,1.118
+Home Decor,Party & Celebration,10757,26476,0.4063,1.124
+Home Decor,"Toys, Kids & Craft",10015,26476,0.3783,1.089
+Home Decor,Seasonal,9516,26476,0.3594,1.152
+Home Decor,Jewellery & Accessories,9483,26476,0.3582,1.142
+Home Decor,Garden & Outdoor,8752,26476,0.3306,1.198
+Jewellery & Accessories,Kitchen & Dining,10251,11388,0.9002,1.091
+Jewellery & Accessories,Bags & Storage,9545,11388,0.8382,1.168
+Jewellery & Accessories,Home Decor,9483,11388,0.8327,1.142
+Jewellery & Accessories,Other,9380,11388,0.8237,1.2
+Jewellery & Accessories,Stationery & Gift Wrap,7815,11388,0.6862,1.363
+Jewellery & Accessories,Lighting & Candles,7726,11388,0.6784,1.222
+Jewellery & Accessories,"Toys, Kids & Craft",5583,11388,0.4903,1.412
+Jewellery & Accessories,Party & Celebration,5547,11388,0.4871,1.347
+Jewellery & Accessories,Seasonal,4976,11388,0.437,1.4
+Jewellery & Accessories,Garden & Outdoor,4334,11388,0.3806,1.379
+Kitchen & Dining,Bags & Storage,23028,29946,0.769,1.071
+Kitchen & Dining,Home Decor,22936,29946,0.7659,1.05
+Kitchen & Dining,Other,21916,29946,0.7319,1.066
+Kitchen & Dining,Lighting & Candles,17591,29946,0.5874,1.058
+Kitchen & Dining,Stationery & Gift Wrap,16398,29946,0.5476,1.088
+Kitchen & Dining,Party & Celebration,11962,29946,0.3995,1.105
+Kitchen & Dining,"Toys, Kids & Craft",11494,29946,0.3838,1.105
+Kitchen & Dining,Jewellery & Accessories,10251,29946,0.3423,1.091
+Kitchen & Dining,Seasonal,9952,29946,0.3323,1.065
+Kitchen & Dining,Garden & Outdoor,9204,29946,0.3074,1.114
+Lighting & Candles,Kitchen & Dining,17591,20162,0.8725,1.058
+Lighting & Candles,Home Decor,16891,20162,0.8378,1.149
+Lighting & Candles,Bags & Storage,15636,20162,0.7755,1.081
+Lighting & Candles,Other,15454,20162,0.7665,1.116
+Lighting & Candles,Stationery & Gift Wrap,11805,20162,0.5855,1.163
+Lighting & Candles,Party & Celebration,8597,20162,0.4264,1.179
+Lighting & Candles,"Toys, Kids & Craft",7978,20162,0.3957,1.139
+Lighting & Candles,Jewellery & Accessories,7726,20162,0.3832,1.222
+Lighting & Candles,Seasonal,7656,20162,0.3797,1.217
+Lighting & Candles,Garden & Outdoor,7150,20162,0.3546,1.285
+Other,Kitchen & Dining,21916,24931,0.8791,1.066
+Other,Home Decor,19890,24931,0.7978,1.094
+Other,Bags & Storage,19813,24931,0.7947,1.107
+Other,Lighting & Candles,15454,24931,0.6199,1.116
+Other,Stationery & Gift Wrap,14943,24931,0.5994,1.19
+Other,Party & Celebration,10654,24931,0.4273,1.182
+Other,"Toys, Kids & Craft",10611,24931,0.4256,1.225
+Other,Jewellery & Accessories,9380,24931,0.3762,1.2
+Other,Seasonal,9061,24931,0.3634,1.165
+Other,Garden & Outdoor,8396,24931,0.3368,1.22
+Party & Celebration,Kitchen & Dining,11962,13126,0.9113,1.105
+Party & Celebration,Bags & Storage,10910,13126,0.8312,1.158
+Party & Celebration,Home Decor,10757,13126,0.8195,1.124
+Party & Celebration,Other,10654,13126,0.8117,1.182
+Party & Celebration,Stationery & Gift Wrap,9205,13126,0.7013,1.393
+Party & Celebration,Lighting & Candles,8597,13126,0.655,1.179
+Party & Celebration,"Toys, Kids & Craft",6329,13126,0.4822,1.388
+Party & Celebration,Jewellery & Accessories,5547,13126,0.4226,1.347
+Party & Celebration,Garden & Outdoor,5073,13126,0.3865,1.401
+Party & Celebration,Seasonal,4712,13126,0.359,1.151
+Seasonal,Kitchen & Dining,9952,11328,0.8785,1.065
+Seasonal,Home Decor,9516,11328,0.84,1.152
+Seasonal,Bags & Storage,9077,11328,0.8013,1.116
+Seasonal,Other,9061,11328,0.7999,1.165
+Seasonal,Lighting & Candles,7656,11328,0.6758,1.217
+Seasonal,Stationery & Gift Wrap,7577,11328,0.6689,1.329
+Seasonal,"Toys, Kids & Craft",5535,11328,0.4886,1.407
+Seasonal,Jewellery & Accessories,4976,11328,0.4393,1.4
+Seasonal,Party & Celebration,4712,11328,0.416,1.151
+Seasonal,Garden & Outdoor,3787,11328,0.3343,1.211
+Stationery & Gift Wrap,Kitchen & Dining,16398,18280,0.897,1.088
+Stationery & Gift Wrap,Bags & Storage,15194,18280,0.8312,1.158
+Stationery & Gift Wrap,Other,14943,18280,0.8175,1.19
+Stationery & Gift Wrap,Home Decor,14906,18280,0.8154,1.118
+Stationery & Gift Wrap,Lighting & Candles,11805,18280,0.6458,1.163
+Stationery & Gift Wrap,Party & Celebration,9205,18280,0.5036,1.393
+Stationery & Gift Wrap,"Toys, Kids & Craft",9058,18280,0.4955,1.427
+Stationery & Gift Wrap,Jewellery & Accessories,7815,18280,0.4275,1.363
+Stationery & Gift Wrap,Seasonal,7577,18280,0.4145,1.329
+Stationery & Gift Wrap,Garden & Outdoor,6503,18280,0.3557,1.289
+"Toys, Kids & Craft",Kitchen & Dining,11494,12610,0.9115,1.105
+"Toys, Kids & Craft",Bags & Storage,11116,12610,0.8815,1.228
+"Toys, Kids & Craft",Other,10611,12610,0.8415,1.225
+"Toys, Kids & Craft",Home Decor,10015,12610,0.7942,1.089
+"Toys, Kids & Craft",Stationery & Gift Wrap,9058,12610,0.7183,1.427
+"Toys, Kids & Craft",Lighting & Candles,7978,12610,0.6327,1.139
+"Toys, Kids & Craft",Party & Celebration,6329,12610,0.5019,1.388
+"Toys, Kids & Craft",Jewellery & Accessories,5583,12610,0.4427,1.412
+"Toys, Kids & Craft",Seasonal,5535,12610,0.4389,1.407
+"Toys, Kids & Craft",Garden & Outdoor,4860,12610,0.3854,1.397

@@ -1,0 +1,7 @@
+step,rows
+raw lines,1067371
+"after removing 1,088 invoices duplicated across sheets",1044848
+"merchandise sale lines (no cancellations, fees, write-offs)",1015069
+basket lines (invoice x product),992037
+orders (baskets),39516
+single-product orders (cannot contain a pair),3208

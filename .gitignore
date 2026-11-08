@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.DS_Store
+~$*.xlsx
+data/raw/*.xlsx
+data/interim/
+warehouse/
+# ~62 MB, regenerate with run_all.py
+data/processed/basket_line.csv

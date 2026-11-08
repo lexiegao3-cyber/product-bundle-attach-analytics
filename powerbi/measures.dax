@@ -1,0 +1,107 @@
+// =====================================================================
+// DAX - Product Bundle & Attach Analytics
+//
+// Tables (Power Query, see power_query/queries.pq):
+//   basket_line   one row per order x product      (~992k rows)
+//   orders        one row per order
+//   product       one row per stock code (description, category)
+//   Anchor        DISCONNECTED copy of product - the "if a customer buys this..." selector
+//   customer_rfm  one row per identified customer (RFM scores, segment)
+//
+// Relationships (single direction):
+//   product[stock_code]   1 -> * basket_line[stock_code]
+//   orders[invoice]       1 -> * basket_line[invoice]
+//   customer_rfm[customer_id] 1 -> * orders[customer_id]
+//   Anchor: no relationships (this is what makes the attach pattern work)
+//
+// Report pattern: slicer on Anchor[description]; table with product[description]
+// and the attach measures -> "customers who bought X also bought ...".
+// =====================================================================
+
+
+// ---------- basics ---------------------------------------------------
+Orders = DISTINCTCOUNT ( basket_line[invoice] )
+
+Multi-product Orders =
+CALCULATE ( COUNTROWS ( orders ), orders[distinct_products] >= 2 )
+
+Merchandise Revenue = SUM ( basket_line[line_revenue] )
+
+Avg Products per Order = AVERAGE ( orders[distinct_products] )
+
+Avg Order Value = DIVIDE ( SUM ( orders[order_value] ), COUNTROWS ( orders ) )
+
+
+// ---------- attach pattern ------------------------------------------
+// Orders that contain the selected anchor product (ignores the product on the row).
+// Only multi-product orders count, matching the Python/SQL rules.
+Anchor Orders =
+VAR _anchor = SELECTEDVALUE ( Anchor[stock_code] )
+RETURN
+    CALCULATE (
+        DISTINCTCOUNT ( basket_line[invoice] ),
+        REMOVEFILTERS ( product ),
+        basket_line[stock_code] = _anchor,
+        orders[distinct_products] >= 2
+    )
+
+// Orders that contain the anchor AND the product on the current row
+Orders With Both =
+VAR _anchor = SELECTEDVALUE ( Anchor[stock_code] )
+VAR _anchorInvoices =
+    CALCULATETABLE (
+        VALUES ( basket_line[invoice] ),
+        REMOVEFILTERS ( product ),
+        basket_line[stock_code] = _anchor,
+        orders[distinct_products] >= 2
+    )
+RETURN
+    IF (
+        SELECTEDVALUE ( product[stock_code] ) <> _anchor,
+        CALCULATE ( DISTINCTCOUNT ( basket_line[invoice] ), KEEPFILTERS ( _anchorInvoices ) )
+    )
+
+Attach Rate = DIVIDE ( [Orders With Both], [Anchor Orders] )
+
+// probability of the row product in any multi-product order
+Baseline Rate =
+DIVIDE (
+    CALCULATE ( DISTINCTCOUNT ( basket_line[invoice] ), orders[distinct_products] >= 2 ),
+    CALCULATE ( [Multi-product Orders], REMOVEFILTERS ( product ) )
+)
+
+Lift = DIVIDE ( [Attach Rate], [Baseline Rate] )
+
+Anchor Orders Without Product = [Anchor Orders] - [Orders With Both]
+
+// show only meaningful companions: enough shared orders and real lift
+Is Strong Companion =
+IF ( [Orders With Both] >= 150 && [Attach Rate] >= 0.30 && [Lift] >= 3, 1, 0 )
+
+Companion Rank =
+IF (
+    ISINSCOPE ( product[description] ),
+    RANKX ( ALLSELECTED ( product[description] ), [Attach Rate], , DESC, DENSE )
+)
+
+
+// ---------- what-if (Modeling > New parameter > Numeric range) -------
+// Gap Conversion: 0 .. 0.5, step 0.01, default 0.10
+Attach Gap Revenue (what-if) =
+SUMX (
+    VALUES ( product[stock_code] ),
+    [Anchor Orders Without Product] * [Gap Conversion Value]
+        * CALCULATE ( MAX ( product[avg_unit_price] ) )
+)
+
+
+// ---------- customers --------------------------------------------------
+Customers = DISTINCTCOUNT ( orders[customer_id] )
+
+Revenue Share of Segment =
+DIVIDE (
+    SUM ( orders[order_value] ),
+    CALCULATE ( SUM ( orders[order_value] ), REMOVEFILTERS ( customer_rfm[segment] ) )
+)
+
+Avg Recency (days) = AVERAGE ( customer_rfm[recency_days] )

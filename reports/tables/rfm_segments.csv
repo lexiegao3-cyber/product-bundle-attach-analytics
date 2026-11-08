@@ -1,0 +1,7 @@
+segment,customers,avg_recency_days,avg_orders,revenue,share_of_customers,share_of_revenue
+Champions,1463,20.53,15.603,11797107.34,0.25,0.689
+Loyal,518,104.635,8.448,1683541.28,0.089,0.098
+Needs attention,1553,169.95,2.638,1564945.36,0.265,0.091
+Loyal - slipping,360,342.731,7.639,1042706.96,0.062,0.061
+Lapsed,1511,456.942,1.25,623579.65,0.258,0.036
+New / promising,447,28.398,1.468,413045.64,0.076,0.024
