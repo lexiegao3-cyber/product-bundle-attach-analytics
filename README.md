@@ -42,7 +42,7 @@ Full write-up and caveats: [`reports/findings.md`](reports/findings.md)
   attach rate, lift, orders with both, the attach gap and a what-if revenue column driven by an input cell
   (`INDEX/MATCH` on structured tables, data validation). Also: strong rules, RFM and cohort-value tables.
 - **`powerbi/`**: Power Query scripts, DAX for the disconnected-anchor attach pattern
-  (Attach Rate, Lift, Orders With Both, Companion Rank, what-if gap revenue) and a build guide.
+  (Attach Rate, Lift, Orders With Both, Companion Rank, what-if gap revenue), 12-month CLV, repeat rate and cohort retention measures, and a build guide.
 - **`sql/basket_rules.sql`**: Apriori pruning with CTEs, a self-join for pairs, category attach matrix, basket-size profile.
 
 ## Run it

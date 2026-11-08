@@ -13,6 +13,8 @@ Run `python run_all.py` first. Then in Power BI Desktop (about 3 hours):
 **Check:** pick *White Hanging Heart T-Light Holder* in an `Anchor[description]` slicer. In a table of
 `product[description]`, *Red Hanging Heart T-Light Holder* should show Orders With Both **1,234**,
 Anchor Orders **5,311** and Attach Rate **23.2%**. These are the numbers in `excel/bundle_explorer.xlsx`.
+On the CLV page, the 2010 Q1 cohort should show CLV 12M of about **£1,958** and a 12-month repeat rate of
+**81%** (`reports/tables/value_12m_by_cohort.csv`).
 
 ## 2. Pages
 | Page | Content |
@@ -21,6 +23,7 @@ Anchor Orders **5,311** and Attach Rate **23.2%**. These are the numbers in `exc
 | **Attach explorer** | Slicer: `Anchor[description]` (single select, search on) · table: `product[description]`, Orders With Both, Attach Rate, Lift, Anchor Orders Without Product, Attach Gap Revenue (what-if) · visual-level filter Companion Rank ≤ 10 · Gap Conversion slicer |
 | **Category view** | Matrix: anchor category × companion category from `reports/tables/category_attach.csv` (add as another query) with lift as diverging background colour |
 | **Customers** | Bar: customers and revenue by `customer_rfm[segment]` · scatter: frequency vs monetary coloured by segment · table of "Loyal - slipping" customers for a win-back list |
+| **CLV & retention** | Add the `months_since_first` calculated column (see `measures.dax`) · column chart: CLV 12M (avg per customer) by `customer_rfm[cohort_month]` (quarter level) · card: Repeat Rate 12M · matrix: cohort_month × months_since_first with Retention Rate as a blue colour scale · slicer on segment |
 
 ## 3. Publish
 Same as any report: publish to a workspace, Viewer access for merchandising/marketing,

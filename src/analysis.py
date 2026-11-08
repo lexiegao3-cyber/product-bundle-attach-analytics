@@ -142,7 +142,9 @@ def rfm(orders: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
                 .assign(share_of_customers=lambda d: d.customers / d.customers.sum(),
                         share_of_revenue=lambda d: d.revenue / d.revenue.sum())
                 .sort_values("revenue", ascending=False).round(3).reset_index())
-    return c.reset_index(), summary
+    c = c.reset_index()
+    c["customer_id"] = c["customer_id"].astype("Int64")
+    return c, summary
 
 
 def value_12m(orders: pd.DataFrame) -> pd.DataFrame:

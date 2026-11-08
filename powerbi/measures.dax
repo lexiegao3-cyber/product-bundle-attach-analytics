@@ -95,6 +95,55 @@ SUMX (
 )
 
 
+// ---------- customer lifetime value & retention ------------------------
+// Calculated column on orders (Modeling > New column):
+//   months_since_first = DATEDIFF ( RELATED ( customer_rfm[first_purchase] ), orders[invoice_date], MONTH )
+
+Data End Date = CALCULATE ( MAX ( orders[invoice_date] ), REMOVEFILTERS () )
+
+// Historical 12-month CLV: merchandise spend in the 365 days after first purchase,
+// averaged over customers who have a full year of data. Matches
+// reports/tables/value_12m_by_cohort.csv (e.g. 2010 Q1 cohort = GBP 1,958).
+CLV 12M (avg per customer) =
+VAR _end = [Data End Date]
+VAR _eligible =
+    FILTER ( VALUES ( customer_rfm[customer_id] ),
+             CALCULATE ( MAX ( customer_rfm[first_purchase] ) ) <= _end - 365 )
+RETURN
+    AVERAGEX (
+        _eligible,
+        VAR _f = CALCULATE ( MAX ( customer_rfm[first_purchase] ) )
+        RETURN
+            CALCULATE ( SUM ( orders[order_value] ),
+                        orders[invoice_date] >= _f, orders[invoice_date] < _f + 365,
+                        REMOVEFILTERS ( orders[months_since_first] ) )
+    )
+
+Repeat Rate 12M =
+VAR _end = [Data End Date]
+VAR _eligible =
+    FILTER ( VALUES ( customer_rfm[customer_id] ),
+             CALCULATE ( MAX ( customer_rfm[first_purchase] ) ) <= _end - 365 )
+RETURN
+    DIVIDE (
+        COUNTROWS ( FILTER ( _eligible,
+            VAR _f = CALCULATE ( MAX ( customer_rfm[first_purchase] ) )
+            RETURN CALCULATE ( DISTINCTCOUNT ( orders[invoice] ),
+                               orders[invoice_date] >= _f, orders[invoice_date] < _f + 365,
+                               REMOVEFILTERS ( orders[months_since_first] ) ) >= 2 ) ),
+        COUNTROWS ( _eligible )
+    )
+
+// Cohort retention matrix: rows customer_rfm[cohort_month], columns orders[months_since_first]
+Cohort Size =
+CALCULATE ( DISTINCTCOUNT ( orders[customer_id] ),
+            orders[months_since_first] = 0, REMOVEFILTERS ( orders[months_since_first] ) )
+
+Active Customers = DISTINCTCOUNT ( orders[customer_id] )
+
+Retention Rate = DIVIDE ( [Active Customers], [Cohort Size] )
+
+
 // ---------- customers --------------------------------------------------
 Customers = DISTINCTCOUNT ( orders[customer_id] )
 

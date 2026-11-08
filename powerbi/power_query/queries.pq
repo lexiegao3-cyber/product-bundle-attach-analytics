@@ -63,10 +63,11 @@ let
     Typed   = Table.TransformColumnTypes(Headers, {
         {"customer_id", Int64.Type}, {"frequency", Int64.Type}, {"monetary", Currency.Type},
         {"recency_days", Int64.Type}, {"R", Int64.Type}, {"F", Int64.Type}, {"M", Int64.Type},
-        {"segment", type text}}, "en-US"),
-    Slim    = Table.RemoveColumns(Typed, {"last", "first"})
+        {"segment", type text}, {"first", type date}, {"last", type date}}, "en-US"),
+    Renamed = Table.RenameColumns(Typed, {{"first", "first_purchase"}, {"last", "last_purchase"}}),
+    Cohort  = Table.AddColumn(Renamed, "cohort_month", each Date.StartOfMonth([first_purchase]), type date)
 in
-    Slim
+    Cohort
 
 
 // ---------- query: strong_rules   (pre-computed rules for the overview page)
